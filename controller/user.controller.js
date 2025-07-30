@@ -51,7 +51,7 @@ const updateData = async (req, res) => {
         const { id } = req.params;
         const updateddata = req.body; //
         const index = database.findIndex((ele) => ele.id === Number(id)) // 3===4 =-1
-
+        console.log(index)
         if (index === -1) {
             return res.status(404).send({ message: "User ID not found" });
         }
@@ -72,9 +72,11 @@ const deleteData = async (req, res) => {
         const index = database.findIndex((ele) => {
             return ele.id === Number(id)
         })
+         console.log(index)
         if (index === -1) {
             return res.status(404).send({ message: "User ID not found" });
         }
+        
         database.splice(index, 1);
         console.log(database)
         return res.status(200).send({ message: "deleted successfully", result: database })
