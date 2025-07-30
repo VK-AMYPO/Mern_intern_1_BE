@@ -47,9 +47,9 @@ const updateData = async (req, res) => {
         const index = database.findIndex((ele) => {
             return ele.id === Number(id)
         })
-        if (index + 1 != id) {
-            return res.status(400).send({ message: "Id could not found" })
-        }
+        // if (index + 1 != id) {
+        //     return res.status(400).send({ message: "Id could not found" })
+        // }
         //  database[index]=updateddata  //patch
         database.splice(index, 1, updateddata)//0 ,1,update put
         res.status(200).send({ message: "Data updated", result: database })
@@ -65,9 +65,8 @@ const deleteData = async (req, res) => {
         const index = database.findIndex((ele) => {
             return ele.id === Number(id)
         })
-       
-            database.splice(index, 1)//0 ,1,update
-          return  res.status(200).send({ message: "deleted successfully", result: database })
+         database.splice(index, 1)//0 ,1,update
+        return  res.status(200).send({ message: "deleted successfully", result: database })
 
 
 
