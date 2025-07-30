@@ -52,6 +52,8 @@ const updateData = async (req, res) => {
         // }
         //  database[index]=updateddata  //patch
         database.splice(index, 1, updateddata)//0 ,1,update put
+        console.log(database);
+        
         res.status(200).send({ message: "Data updated", result: database })
 
     } catch (err) {
@@ -65,7 +67,9 @@ const deleteData = async (req, res) => {
         const index = database.findIndex((ele) => {
             return ele.id === Number(id)
         })
-         database.splice(index, 1)//0 ,1,update
+        database.splice(index, 1)//0 ,1,update
+        console.log(database);
+        
         return  res.status(200).send({ message: "deleted successfully", result: database })
 
 
