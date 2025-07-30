@@ -9,7 +9,7 @@ const postUser = async (req, res) => {
         if (existingemail) {
             return res.status(400).send({ message: "The email already exists...." })
         }
-        const data = database.push(newEntry);
+        database.push(newEntry);
         res.status(201).send({ message: "Data Added...", result: database })
     } catch (err) {
         res.status(500).send({ message: "Data Not Added...", result: err })
