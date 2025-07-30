@@ -19,6 +19,7 @@ const postUser = async (req, res) => {
 const getData = async (req, res) => {
     try {
         res.status(200).send({ message: "Data Getted", result: database })
+        console.log(database)
 
     } catch (err) {
         res.status(500).send({ message: "Data not getted...", result: err })
@@ -38,6 +39,7 @@ const getDataById = async (req, res) => {
         if (!existingdata) {
             return res.status(400).send({ message: "Id could not found" })
         }
+        
         res.status(200).send({ message: "Data Getted", result: existingdata })
 
     } catch (err) {
@@ -55,7 +57,7 @@ const updateData = async (req, res) => {
         }
         //  database[index]=updateddata  //patch
         database.splice(index, 1, updateddata)//0 ,1,update put
-
+        console.log(database)
 
         res.status(200).send({ message: "Data updated", result: database })
 
@@ -74,9 +76,8 @@ const deleteData = async (req, res) => {
             return res.status(404).send({ message: "User ID not found" });
         }
         database.splice(index, 1);
+        console.log(database)
         return res.status(200).send({ message: "deleted successfully", result: database })
-
-
 
     } catch (err) {
         res.status(500).send({ message: "Data not deleted...", result: err })
